@@ -2,14 +2,14 @@ import 'package:fast_app_base/screen/main/fab/w_floating_daangn_button.riverpod.
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class HomeFragment extends ConsumerStatefulWidget {
-  const HomeFragment({super.key});
+class LocalLifeFragment extends ConsumerStatefulWidget {
+  const LocalLifeFragment({super.key});
 
   @override
-  ConsumerState<HomeFragment> createState() => _HomeFragmentState();
+  ConsumerState<LocalLifeFragment> createState() => _LocalLifeFragmentState();
 }
 
-class _HomeFragmentState extends ConsumerState<HomeFragment> {
+class _LocalLifeFragmentState extends ConsumerState<LocalLifeFragment> {
   final scrollController = ScrollController();
 
   @override
@@ -17,7 +17,6 @@ class _HomeFragmentState extends ConsumerState<HomeFragment> {
     scrollController.addListener(() {
       final floatingState = ref.read(floatingButtonStateProvider);
 
-      // 100 이상 스크롤 하고, 큰 상태라면 true,
       if (scrollController.position.pixels > 100 && !floatingState.isSmall) {
         ref.read(floatingButtonStateProvider.notifier).changeButtonSize(true);
       } else if (scrollController.position.pixels < 100 && floatingState.isSmall) {
@@ -32,10 +31,11 @@ class _HomeFragmentState extends ConsumerState<HomeFragment> {
     return ListView(
       controller: scrollController,
       children: [
-        Container(height: 500, color: Colors.red),
-        Container(height: 500, color: Colors.blue),
-        Container(height: 500, color: Colors.red),
-        Container(height: 500, color: Colors.blue),
+        Image.network('https://picsum.photos/id/134/200/300'),
+        Container(height: 500, color: Colors.orange),
+        Container(height: 500, color: Colors.green),
+        Container(height: 500, color: Colors.orange),
+        Container(height: 500, color: Colors.green),
       ],
     );
   }
